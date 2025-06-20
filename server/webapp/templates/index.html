@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="text-center h-25 row align-items-center">
+        <h1 class="display-3">{{ page_text }}</h1>
+        <p class="lead">Здесь представлены три различные диаграммы с информацией по Python вакансиям.</p>
+        <p class="lead">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <a href="{{ url_for('vacancies') }}" class="btn btn-lg btn-outline-dark p-5">График 1: количество вакансий по уровням.</a>
+                    </div>
+                    <div class="col-sm">
+                        <a href="{{ url_for('salary') }}" class="btn btn-lg btn-outline-dark p-5">График 2: распределение зарплат по уровням.</a>
+                    </div>
+                    <div class="col-sm">
+                        <a href="{{ url_for('keyskills') }}" class="btn btn-lg btn-outline-dark p-5">График 3: рейтинг ключевых навыков по популярности.</a>
+                    </div>
+            </div>
+        </p>
+    </div>
+</div>
+{% endblock %} 

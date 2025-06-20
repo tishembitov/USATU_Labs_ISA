@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!doctype html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Keyskills dashboard</title>
+</head>
+
+<div class="text-center">
+    <h1 class="display-3">Ключевые навыки</h1>
+    <div class="d-flex justify-content-center">
+        <form action="" method="get" novalidate>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group" style="width:250px">
+                            <label for="inputDate">Данные за период с:</label>
+                            <input type="date" name="date_from" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group" style="width:250px">
+                            <label for="inputDate">Данные за период по:</label>
+                            <input type="date" name="date_to" class="form-control"><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <label for="inputDate">Укажите навыки:</label><br>                       
+                <select class="js-example-basic-multiple" name="skills[]" multiple="multiple">
+                    {% for skill in skills %}
+                        <option>{{ skill }}</option>
+                    {% endfor %}
+                </select>
+                <script>
+                    $(document).ready(function() {
+                        $('.js-example-basic-multiple').select2({ width: '100%' });
+                    });
+                </script>
+                <div class="col-sm">
+                    <br>
+                    <input type="submit" value="Искать">
+            </div>
+        </form>
+    </div>
+</div><br>
+
+<div class="text-center">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+        <h6 class="display-6">{{ message }}</h6>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+    <img src="{{image}}" alt="Bar dashboard"/>
+</div>
+
+</html>
+{% endblock %}
